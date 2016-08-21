@@ -20,24 +20,24 @@ from django.utils.feedgenerator import Rss201rev2Feed
 from mezzanine.blog.feeds import PostsRSS
 
 
-def add_hub_link(syndication_feed, handler):
-    hub = syndication_feed.feed.get('hub')
-    if hub is not None:
-        for elem in hub:
-            handler.addQuickElement('link', '', {'rel': 'hub',
-                                                 'href': elem})
-
-
 class HubRss201rev2Feed(Rss201rev2Feed):
     def add_root_elements(self, handler):
         super(Rss201rev2Feed, self).add_root_elements(handler)
-        add_hub_link(self, handler)
+        hub = self.feed.get('hub')
+        if hub is not None:
+            for elem in hub:
+                handler.addQuickElement('atom:link', '', {'rel': 'hub',
+                                                          'href': elem})
 
 
 class HubAtom1Feed(Atom1Feed):
     def add_root_elements(self, handler):
         super(Atom1Feed, self).add_root_elements(handler)
-        add_hub_link(self, handler)
+        hub = self.feed.get('hub')
+        if hub is not None:
+            for elem in hub:
+                handler.addQuickElement('link', '', {'rel': 'hub',
+                                                     'href': elem})
 
 
 class HubPostsRSS(PostsRSS):
