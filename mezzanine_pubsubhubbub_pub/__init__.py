@@ -28,7 +28,6 @@ LICENSE = 'Apache license 2.0'
 __version__ = VERSION
 UA = 'mezzanine-pubsubhubbub-pub' + '/{0}'.format(__version__)
 
-
 def ping_hub(feed_url, hub_url=None):
     """
     Makes a POST request to the hub. If no hub_url is provided, the

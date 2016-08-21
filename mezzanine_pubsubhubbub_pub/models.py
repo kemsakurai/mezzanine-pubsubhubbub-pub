@@ -14,29 +14,30 @@
    limitations under the License.
 """
 
-from django.contrib import admin
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
-from mezzanine.blog.admin import BlogPostAdmin
+from django.db.models.signals import post_save
 from mezzanine.blog.models import BlogPost
+from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
+from mezzanine.utils.models import ModelMixin
 from mezzanine.utils.sites import current_site_id
 
 from mezzanine_pubsubhubbub_pub import ping_hub
 
 
-class HubBlogPostAdmin(BlogPostAdmin):
-    def save_form(self, request, form, change):
-        """
-        Super class ordering is important here - user must get saved first.
-        """
-        result = BlogPostAdmin.save_form(self, request, form, change)
+class HubBlogPost(ModelMixin):
+    class Meta:
+        mixin_for = BlogPost
+
+
+def notify_blog_post(sender, instance, **kwargs):
+    if instance.status == CONTENT_STATUS_PUBLISHED:
         site = Site.objects.get(id=current_site_id())
         rss_url = 'http://' + site.domain + reverse("blog_post_feed", kwargs={"format": "rss"})
         ping_hub(rss_url)
 
         atom_url = 'http://' + site.domain + reverse("blog_post_feed", kwargs={"format": "atom"})
         ping_hub(atom_url)
-        return result
 
 
-admin.site.register(BlogPost, BlogPostAdmin)
+post_save.connect(notify_blog_post, sender=HubBlogPost)
