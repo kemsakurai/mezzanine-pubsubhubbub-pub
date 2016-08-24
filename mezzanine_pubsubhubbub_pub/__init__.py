@@ -28,11 +28,12 @@ LICENSE = 'Apache license 2.0'
 __version__ = VERSION
 UA = 'mezzanine-pubsubhubbub-pub' + '/{0}'.format(__version__)
 
+
 def ping_hub(feed_url, hub_url=None):
     """
     Makes a POST request to the hub. If no hub_url is provided, the
     value is fetched from the PUSH_HUB setting.
-    Returns a `requests.models.Response` object.
+    Returns a dictionary with `requests.models.Response` object to the value
     """
     if hub_url is None:
         hub_url = getattr(settings, 'PUSH_HUB', None)
