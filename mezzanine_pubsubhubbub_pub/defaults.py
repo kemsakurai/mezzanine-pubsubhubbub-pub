@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
    Copyright 2016 Kem
 
@@ -14,12 +15,25 @@
    limitations under the License.
 """
 
+from __future__ import unicode_literals
+
+from django.utils.translation import ugettext_lazy as _
 from mezzanine.conf import register_setting
+
+from mezzanine_pubsubhubbub_pub import PROTOCOL_TYPE_CHOICES, PROTOCOL_TYPE_HTTP
 
 register_setting(
     name="PUSH_HUB",
     description=_("You can either use your own or use a public hub. "
-                  "add your hub’s URL as a PUSH_HUB setting (the URL must be a full URL):"),
+                  "add your hub’s URL as a PUSH_HUB setting (the URL must be a full URL)"),
     editable=True,
     default=("https://pubsubhubbub.appspot.com/",),
+)
+register_setting(
+    name="PUSH_URL_PROTOCOL",
+    description=_("Your feed url protcol."
+                  "You can choice in HTTP_ONLY , HTTPS_ONLY, BOTH"),
+    editable=True,
+    default=PROTOCOL_TYPE_HTTP,
+    choices=PROTOCOL_TYPE_CHOICES,
 )

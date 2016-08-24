@@ -28,6 +28,15 @@ LICENSE = 'Apache license 2.0'
 __version__ = VERSION
 UA = 'mezzanine-pubsubhubbub-pub' + '/{0}'.format(__version__)
 
+PROTOCOL_TYPE_HTTP = "http"
+PROTOCOL_TYPE_HTTPS = "https"
+PROTOCOL_TYPE_BOTH = "both"
+PROTOCOL_TYPE_CHOICES = (
+    (PROTOCOL_TYPE_HTTP, _("HTTP_ONLY")),
+    (PROTOCOL_TYPE_HTTPS, _("HTTPS_ONLY")),
+    (PROTOCOL_TYPE_BOTH, _("BOTH")),
+)
+
 
 def ping_hub(feed_url, hub_url=None):
     """
