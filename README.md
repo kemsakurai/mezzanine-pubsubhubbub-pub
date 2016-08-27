@@ -12,4 +12,4 @@ Installation
 ------------
 
     $ pip install -e git+https://github.com/kemsakurai/mezzanine-pubsubhubbub-pub.git#egg=mezzanine_pubsubhubbub_pub
-    
+

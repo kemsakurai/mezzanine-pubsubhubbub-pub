@@ -29,6 +29,7 @@ register_setting(
     editable=True,
     default=("https://pubsubhubbub.appspot.com/",),
 )
+
 register_setting(
     name="PUSH_URL_PROTOCOL",
     description=_("Your feed url protcol."

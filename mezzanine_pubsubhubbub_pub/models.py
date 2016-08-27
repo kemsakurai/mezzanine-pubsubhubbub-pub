@@ -56,6 +56,9 @@ def notify_blog_post(sender, instance, **kwargs):
             raise ValueError("PUSH_URL_PROTOCOL is None...")
 
 
+post_save.connect(notify_blog_post, sender=HubBlogPost)
+
+
 def __ping_hub_https(site):
     rss_url = 'https://' + site.domain + reverse("blog_post_feed", kwargs={"format": "rss"})
     ping_hub(rss_url)
@@ -68,6 +71,3 @@ def __ping_hub_http(site):
     ping_hub(rss_url)
     atom_url = 'http://' + site.domain + reverse("blog_post_feed", kwargs={"format": "atom"})
     ping_hub(atom_url)
-
-
-post_save.connect(notify_blog_post, sender=HubBlogPost)

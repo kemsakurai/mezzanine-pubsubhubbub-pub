@@ -18,6 +18,7 @@ from __future__ import unicode_literals
 
 import requests
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 AUTHOR = 'Ken Sakurai'
 EMAIL = 'sakurai.kem@gmail.com'
