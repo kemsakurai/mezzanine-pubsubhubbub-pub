@@ -46,7 +46,7 @@ INSTALLED_APPS = (
 
 STATIC_URL = '/static/'
 
-SECRET_KEY = 'test secret key'
+SECRET_KEY = 'test_secret_key'
 
 SITE_ID = 1
 
@@ -58,7 +58,7 @@ PUSH_HUB = ("https://pubsubhubbub.appspot.com/",)
 
 PUSH_URL_PROTOCOL = PROTOCOL_TYPE_HTTP
 
-ROOT_URLCONF = 'mezzanine_pubsubhubbub_pub.urls'
+ROOT_URLCONF = 'tests.urls'
 
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.

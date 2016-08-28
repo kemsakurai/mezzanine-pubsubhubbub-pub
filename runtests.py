@@ -34,6 +34,7 @@ def runtests():
 
     runner = DiscoverRunner(verbosity=1, interactive=True,
                             failfast=False)
+
     failures = runner.run_tests(())
     sys.exit(failures)
 
