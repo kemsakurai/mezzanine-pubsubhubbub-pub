@@ -39,8 +39,9 @@ setup(
     packages=find_packages(),
     setup_requires=('setuptools'),
     install_requires=('setuptools',
-                      'Mezzanine>=4.2.0',
-                      'requests>=2.1.0',),
+                      'mock',
+                      'Mezzanine',
+                      'requests',),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         'Environment :: Web Environment',

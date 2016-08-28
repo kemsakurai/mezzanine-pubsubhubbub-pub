@@ -14,11 +14,11 @@
    limitations under the License.
 """
 
-from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.db.models.signals import post_save
 from mezzanine.blog.models import BlogPost
+from mezzanine.conf import settings
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.utils.models import ModelMixin
 from mezzanine.utils.sites import current_site_id
@@ -35,23 +35,14 @@ class HubBlogPost(ModelMixin):
 def notify_blog_post(sender, instance, **kwargs):
     if instance.status == CONTENT_STATUS_PUBLISHED:
         site = Site.objects.get(id=current_site_id())
-
         protocol_type = getattr(settings, 'PUSH_URL_PROTOCOL', None)
-
         if protocol_type == PROTOCOL_TYPE_HTTP:
-
             __ping_hub_http(site)
-
         elif protocol_type == PROTOCOL_TYPE_HTTPS:
-
             __ping_hub_https(site)
-
         elif protocol_type == PROTOCOL_TYPE_BOTH:
-
             __ping_hub_http(site)
-
             __ping_hub_https(site)
-
         else:
             raise ValueError("PUSH_URL_PROTOCOL is None...")
 

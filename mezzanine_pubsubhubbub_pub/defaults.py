@@ -26,7 +26,7 @@ register_setting(
     name="PUSH_HUB",
     description=_("You can either use your own or use a public hub. "
                   "add your hub’s URL as a PUSH_HUB setting (the URL must be a full URL)"),
-    editable=True,
+    editable=False,
     default=("https://pubsubhubbub.appspot.com/",),
 )
 

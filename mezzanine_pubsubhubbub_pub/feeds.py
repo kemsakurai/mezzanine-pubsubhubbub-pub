@@ -14,10 +14,10 @@
    limitations under the License.
 """
 
-from django.conf import settings
 from django.utils.feedgenerator import Atom1Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 from mezzanine.blog.feeds import PostsRSS
+from mezzanine.conf import settings
 
 
 class HubRss201rev2Feed(Rss201rev2Feed):
