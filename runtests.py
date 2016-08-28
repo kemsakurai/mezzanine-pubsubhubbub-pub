@@ -38,5 +38,6 @@ def runtests():
     failures = runner.run_tests(())
     sys.exit(failures)
 
+
 if __name__ == '__main__':
     runtests()

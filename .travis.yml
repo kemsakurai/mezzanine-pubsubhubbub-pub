@@ -5,9 +5,9 @@ python:
   - 3.5
 
 install:
-  - pip install django mezzanine
-  - pip install tox tox-travis
-  - pip install coverage coveralls
+  - pip install --user django mezzanine
+  - pip install --user tox tox-travis
+  - pip install --user coverage coveralls
 
 script:
   - tox -r
