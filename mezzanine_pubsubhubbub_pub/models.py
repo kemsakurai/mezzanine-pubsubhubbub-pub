@@ -13,6 +13,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
+from __future__ import print_function
+from __future__ import unicode_literals
 
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
@@ -22,7 +24,6 @@ from mezzanine.conf import settings
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 from mezzanine.utils.models import ModelMixin
 from mezzanine.utils.sites import current_site_id
-
 from mezzanine_pubsubhubbub_pub import PROTOCOL_TYPE_HTTP, PROTOCOL_TYPE_HTTPS, PROTOCOL_TYPE_BOTH
 from mezzanine_pubsubhubbub_pub import ping_hub
 

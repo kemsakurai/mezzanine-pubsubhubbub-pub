@@ -14,10 +14,12 @@
    limitations under the License.
 """
 
+from __future__ import print_function
 from __future__ import unicode_literals
 
 import requests
 from django.conf import settings
+from django.conf.urls import include, url
 from django.utils.translation import ugettext_lazy as _
 
 AUTHOR = 'Ken Sakurai'
@@ -37,6 +39,24 @@ PROTOCOL_TYPE_CHOICES = (
     (PROTOCOL_TYPE_HTTPS, _("HTTPS_ONLY")),
     (PROTOCOL_TYPE_BOTH, _("BOTH")),
 )
+
+
+def get_feed_url_patterns():
+    """
+    Returns feed url patterns if mezzanine.blog is installed.
+    You must call this method before include("mezzanine.urls")
+    """
+    blog_installed = "mezzanine.blog" in settings.INSTALLED_APPS
+    if blog_installed:
+        BLOG_SLUG = settings.BLOG_SLUG.rstrip("/")
+        if BLOG_SLUG:
+            BLOG_SLUG += "/"
+        feed_url_patterns = [
+            url("^%s" % BLOG_SLUG, include("mezzanine_pubsubhubbub_pub.urls")),
+        ]
+        return feed_url_patterns
+    else:
+        return []
 
 
 def ping_hub(feed_url, hub_url=None):

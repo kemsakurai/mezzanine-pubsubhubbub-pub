@@ -14,12 +14,11 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-
+from __future__ import print_function
 from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 from mezzanine.conf import register_setting
-
 from mezzanine_pubsubhubbub_pub import PROTOCOL_TYPE_CHOICES, PROTOCOL_TYPE_HTTP
 
 register_setting(

@@ -13,13 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
+from __future__ import print_function
 from __future__ import unicode_literals
 
 import requests
 from django.core.urlresolvers import resolve
 from mezzanine.conf import settings
 from mezzanine.utils.tests import TestCase
-
 from mezzanine_pubsubhubbub_pub import PROTOCOL_TYPE_HTTP, PROTOCOL_TYPE_HTTPS, PROTOCOL_TYPE_BOTH
 from mezzanine_pubsubhubbub_pub.models import HubBlogPost
 
@@ -59,11 +59,11 @@ class HubBlogPostTest(TestCase):
 
         call_args_list = mock_post.call_args_list
         call = call_args_list[0]
-        expected = self.__create_extpected(u'http://example.com/blog/feeds/rss/')
+        expected = self.__create_extpected('http://example.com/blog/feeds/rss/')
         self.assertEqual(expected, call)
 
         call = call_args_list[1]
-        expected = self.__create_extpected(u'http://example.com/blog/feeds/atom/')
+        expected = self.__create_extpected('http://example.com/blog/feeds/atom/')
         self.assertEqual(expected, call)
 
     @patch.object(requests, "post", side_effect=mocked_requests_post)
@@ -76,11 +76,11 @@ class HubBlogPostTest(TestCase):
 
         call_args_list = mock_post.call_args_list
         call = call_args_list[0]
-        expected = self.__create_extpected(u'https://example.com/blog/feeds/rss/')
+        expected = self.__create_extpected('https://example.com/blog/feeds/rss/')
         self.assertEqual(expected, call)
 
         call = call_args_list[1]
-        expected = self.__create_extpected(u'https://example.com/blog/feeds/atom/')
+        expected = self.__create_extpected('https://example.com/blog/feeds/atom/')
         self.assertEqual(expected, call)
 
     @patch.object(requests, "post", side_effect=mocked_requests_post)
@@ -93,25 +93,26 @@ class HubBlogPostTest(TestCase):
 
         call_args_list = mock_post.call_args_list
         call = call_args_list[0]
-        expected = self.__create_extpected(u'http://example.com/blog/feeds/rss/')
+        expected = self.__create_extpected('http://example.com/blog/feeds/rss/')
         self.assertEqual(expected, call)
 
         call = call_args_list[1]
-        expected = self.__create_extpected(u'http://example.com/blog/feeds/atom/')
+        expected = self.__create_extpected('http://example.com/blog/feeds/atom/')
         self.assertEqual(expected, call)
 
         call = call_args_list[2]
-        expected = self.__create_extpected(u'https://example.com/blog/feeds/rss/')
+        expected = self.__create_extpected('https://example.com/blog/feeds/rss/')
         self.assertEqual(expected, call)
 
         call = call_args_list[3]
-        expected = self.__create_extpected(u'https://example.com/blog/feeds/atom/')
+        expected = self.__create_extpected('https://example.com/blog/feeds/atom/')
         self.assertEqual(expected, call)
 
-    def __create_extpected(self, feed_url):
-        return ((u'https://pubsubhubbub.appspot.com/',), {u"data": {u'hub.url': feed_url,
-                                                                    u'hub.mode': u'publish'}, u"headers": {
-            u'User-Agent': u'mezzanine-pubsubhubbub-pub/0.0.1'}},)
+    @staticmethod
+    def __create_extpected(feed_url):
+        return (('https://pubsubhubbub.appspot.com/',), {"data": {'hub.url': feed_url,
+                                                                  'hub.mode': u'publish'}, "headers": {
+            'User-Agent': 'mezzanine-pubsubhubbub-pub/0.0.1'}},)
 
 
 class BlogPostFeedTest(TestCase):

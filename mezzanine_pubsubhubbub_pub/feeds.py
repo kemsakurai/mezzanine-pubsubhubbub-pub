@@ -13,7 +13,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-
+from __future__ import print_function
+from __future__ import unicode_literals
 from django.utils.feedgenerator import Atom1Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 from mezzanine.blog.feeds import PostsRSS

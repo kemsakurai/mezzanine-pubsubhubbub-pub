@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-
+from __future__ import print_function
 from __future__ import unicode_literals
 
 import os
@@ -37,24 +37,18 @@ setup(
     long_description=open('README.md').read(),
     keywords='django, mezzanine, pubsubhubbub',
     packages=find_packages(),
-    setup_requires=('setuptools'),
     install_requires=('setuptools',
                       'mock',
                       'Mezzanine',
                       'requests',),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
-        'Environment :: Web Environment',
-        'Framework :: Django :: 1.10',
-        'Intended Audience :: Developers',
+        "Environment :: Web Environment",
+        "Framework :: Django",
+        "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: '
-        'Application Frameworks',
-        'Topic :: Software Development :: Libraries :: Python Modules', ],
+        "Programming Language :: Python",
+        "Operating System :: OS Independent", ],
     zip_safe=False,
     include_package_data=True,
 )

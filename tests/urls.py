@@ -1,3 +1,19 @@
+"""
+   Copyright 2016 Kem
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+"""
+from __future__ import print_function
 from __future__ import unicode_literals
 
 from django.conf.urls import include, url
@@ -5,6 +21,7 @@ from django.contrib import admin
 from django.views.i18n import set_language
 from mezzanine.blog.views import blog_post_list
 from mezzanine.conf import settings
+from mezzanine_pubsubhubbub_pub import get_feed_url_patterns
 
 admin.autodiscover()
 
@@ -18,17 +35,7 @@ if settings.USE_MODELTRANSLATION:
         url('^i18n/$', set_language, name='set_language'),
     ]
 
-# Mezzanine's Blog app.
-blog_installed = "mezzanine.blog" in settings.INSTALLED_APPS
-if blog_installed:
-    BLOG_SLUG = settings.BLOG_SLUG.rstrip("/")
-    if BLOG_SLUG:
-        BLOG_SLUG += "/"
-    blog_patterns = [
-        url("^%s" % BLOG_SLUG, include("mezzanine_pubsubhubbub_pub.urls")),
-    ]
-    urlpatterns += blog_patterns
-
+urlpatterns += get_feed_url_patterns()
 urlpatterns += [
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
