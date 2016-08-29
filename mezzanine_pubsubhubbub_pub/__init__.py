@@ -18,8 +18,6 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import requests
-from django.conf import settings
-from django.conf.urls import include, url
 from django.utils.translation import ugettext_lazy as _
 
 AUTHOR = 'Ken Sakurai'
@@ -46,6 +44,8 @@ def get_feed_url_patterns():
     Returns feed url patterns if mezzanine.blog is installed.
     You must call this method before include("mezzanine.urls")
     """
+    from mezzanine.conf import settings
+    from django.conf.urls import include, url
     blog_installed = "mezzanine.blog" in settings.INSTALLED_APPS
     if blog_installed:
         BLOG_SLUG = settings.BLOG_SLUG.rstrip("/")
@@ -65,6 +65,7 @@ def ping_hub(feed_url, hub_url=None):
     value is fetched from the PUSH_HUB setting.
     Returns a dictionary with `requests.models.Response` object to the value
     """
+    from mezzanine.conf import settings
     if hub_url is None:
         hub_url = getattr(settings, 'PUSH_HUB', None)
     if hub_url is None:
