@@ -20,7 +20,7 @@ import requests
 from django.core.urlresolvers import resolve
 from mezzanine.conf import settings
 from mezzanine.utils.tests import TestCase
-from mezzanine_pubsubhubbub_pub import PROTOCOL_TYPE_HTTP, PROTOCOL_TYPE_HTTPS, PROTOCOL_TYPE_BOTH
+from mezzanine_pubsubhubbub_pub import PROTOCOL_TYPE_HTTP, PROTOCOL_TYPE_HTTPS, PROTOCOL_TYPE_BOTH, UA
 from mezzanine_pubsubhubbub_pub.models import HubBlogPost
 
 try:
@@ -112,7 +112,7 @@ class HubBlogPostTest(TestCase):
     def __create_extpected(feed_url):
         return (('https://pubsubhubbub.appspot.com/',), {"data": {'hub.url': feed_url,
                                                                   'hub.mode': u'publish'}, "headers": {
-            'User-Agent': 'mezzanine-pubsubhubbub-pub/0.0.1'}},)
+            'User-Agent': UA}},)
 
 
 class BlogPostFeedTest(TestCase):
