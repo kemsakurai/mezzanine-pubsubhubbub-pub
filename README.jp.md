@@ -11,8 +11,8 @@ django の pubsubhubbub プラグイン [brutasse/django-push: PubSubHubbub supp
 必要条件
 ======================
 
-以下のパッケージインストールを必須としています。<sup>[1](#note1)</sup>
-<small id="note1">pip install 時にインストールされるパケージの事です。</small>
+以下のパッケージインストールを必須としています。<sup>[1](#note1)</sup>  
+<small id="note1">pip install 時にインストールされるパケージの事です。</small>  
 バージョン指定なしのため、最新版がインストールされます。  
 
 * mezzanine 
