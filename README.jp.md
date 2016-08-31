@@ -53,13 +53,11 @@ Taple で 複数URL 設定が可能です。
 管理画面では編集は不可になります。  
 
 * settings.py に PUSH_URL_PROTOCOL の設定をする  
-
 通知時に知らせるFeed URL のプロトコルを設定します。  
 HTTP_ONLY, HTTPS_ONLY, BOTH が設定可能で、  
 BOTH は HTTP/HTTPS 双方のFeed URLで通知を行います。  
 デフォルト値は、HTTP_ONLY になり、  
 管理画面での編集が可能です。  
-
 
 これで設定は終わりです。  
 
