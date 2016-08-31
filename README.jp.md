@@ -44,7 +44,7 @@ from mezzanine_pubsubhubbub_pub import get_feed_url_patterns
 urlpatterns += get_feed_url_patterns()
 ```
 これは、mezzanine.blog の url をinclude する前に追加する必要があります。<sup>[1](#note2)</sup>  
-<small id="note2">mezzanine。blog の url の設定を上書きするためです。 </small>  
+<small id="note2">[1] これは、mezzanine.blog の url の設定を上書きするためです。 </small>  
 
 * settings.py に PUSH_HUB の設定をする    
 HUBサーバーの設定を行います。
