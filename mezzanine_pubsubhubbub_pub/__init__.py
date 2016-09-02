@@ -22,7 +22,7 @@ from django.utils.translation import ugettext_lazy as _
 
 AUTHOR = 'Ken Sakurai'
 EMAIL = 'sakurai.kem@gmail.com'
-VERSION = '0.0.3'
+VERSION = '0.0.4'
 SITE = 'https://github.com/kemsakurai/mezzanine-pubsubhubbub-pub'
 LICENSE = 'Apache license 2.0'
 
