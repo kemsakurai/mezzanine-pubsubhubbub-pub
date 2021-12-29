@@ -17,7 +17,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from django.contrib.sites.models import Site
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db.models.signals import post_save
 from mezzanine.blog.models import BlogPost
 from mezzanine.conf import settings
